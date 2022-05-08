@@ -1,0 +1,273 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import './assets/variables/variables';
+
+body {
+    background-color: #000;
+}
+
+
+
+// page-body-starts
+.page-body {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    @include dispFlex;
+
+    //  header-starts   
+    .header-container {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        &:hover .header {
+            visibility: visible;
+            transition: .5s;
+            transform: translateY(0);
+        }
+
+        .header {
+            @include dispFlex;
+            visibility: hidden;
+            justify-content:space-between;
+            line-height: 17px;
+            color: $color;
+            padding: 5px 0px;
+            transform: translateY(-100%);
+
+            .a {
+                i {
+                    margin: 10px;
+                }
+            }
+            
+            .b{
+                margin-left: 15% ;
+            }
+
+            .c {
+                margin-right: 10px;
+                display: flex;
+                .cc {
+                    padding: 7px 0px;
+                    margin: 0px 10px;
+                    cursor: pointer;
+                }
+
+                span {
+                    background-color: dimgrey;
+                    width: 31px;
+                    height: 31px;
+                    border-radius: 50%;
+                    text-align: center;
+                }
+
+                .login-button {
+                    background-color: #1BC47D;
+                    padding: 7px 5px;
+                    border-radius: 7px;
+                    font-size: 14px;
+                }
+
+                #close_FS {
+                    display: none;
+                }
+
+                #close_FS,
+                #open_FS {
+                    &:hover {
+                        background-color: rgba(235, 225, 225, 0.171);
+                    }
+                }
+            }
+        }
+    }
+
+    //header-ends
+
+
+
+
+
+
+    .content-container {
+        overflow: hidden;
+        margin: 15px 0px;
+        border: $color1 5px solid;
+        background-image: url(../images/10000.jpg);
+        width: 80%;
+        height: 550px;
+        background-size: cover;
+        background-position: center;
+
+        .top {
+            position: relative;
+            display: grid;
+            grid-template-columns: auto 1px auto;
+            grid-template-rows: auto auto;
+            justify-content: center;
+
+            p {
+                line-height: 30px;
+                width: 80px;
+                text-align: center;
+                color: $color;
+                background-color: $color1;
+                border-radius: 5px;
+                font-size: 12px;
+                margin: 20px 9px;
+            }
+
+            .l {
+                justify-self: right;
+                &:hover~.inf-left {
+                    transition: .5s;
+                    visibility: visible;
+                    transform: translateY(0%);
+                }
+            }
+
+            .r {
+                justify-self: left;
+                &:hover~.inf-right {
+                    transition: .5s;
+                    visibility: visible;
+                    transform: translateY(0);
+                }
+            }
+
+            span {
+                height: 17px;
+                width: 1px;
+                background-color: #D1D1D0;
+                margin-top: 27px;
+            }
+
+            .inf-left {
+             @include top-tooltipInf;
+            }
+            .inf-right {
+              @include top-tooltipInf;
+            }
+        }
+
+        .mid {
+            @include dispFlex;
+            justify-content: space-between;
+            height: 60%;
+
+            .left {
+                margin-left: 15px;
+
+                .mid-home {
+                    padding: 7px;
+                    font-size: 30px;
+                    border: $color1 3px solid;
+                    border-radius: 50px;
+                    cursor: pointer;
+                    color: $color;
+                    margin-top: 15px;
+
+                    i {
+                        margin-bottom: 15px;
+                    }
+                }
+
+                div {
+                    i {
+                        @extend .mid-home;
+                    }
+                }
+            }
+
+            .right {
+                margin-right: 15px;
+                position: relative;
+
+                div {
+                    @include dispFlex;
+
+                    &:hover article {
+                        transform: translateX(-100%);
+                        transition: .5s;
+                        visibility: visible;
+                    }
+
+                    i {
+                        color: $color;
+                        font-size: 50px;
+                        padding: 16px 10px;
+                        background-color: $color1;
+                        margin: 10px 0px;
+                        border-radius: 50%;
+                    }
+
+                    article {
+                        padding: 10px;
+                        position: absolute;
+                        pointer-events: none;
+                        visibility: hidden;
+                        display: flex;
+                        width: 400px;
+                        transform: translateX(24%);
+                        background-color: rgba(185, 185, 185, 0.815);
+                    }
+
+                }
+            }
+        }
+
+        .bot {
+            h1 {
+                text-align: center;
+                color: $color;
+                font-size: 40px;
+            }
+
+            .bot-tooltips-container {
+                @include dispFlex;
+                span{
+                    width: 1.5px;
+                    height: 18px;
+                    margin: 20px 5px 0px 5px;
+                    background-color: #D1D1D0;
+                }
+                .bot-tooltips {
+                    position: relative;
+                    small {
+                        margin: 20px 5px 0px 5px;
+                        color: $color;
+                        font-weight: bold;
+                        &:hover~p {
+                            visibility: visible;
+                            transform: translateY(-120%);
+                            transition: .5s;
+                        }
+                    }
+                    .first-title{
+                        &::before{
+                            display: none;
+                        }
+                    }
+                    p {
+                        position: absolute;
+                        left: calc(50% - 150px);
+                        padding: 10px;
+                        text-align: center;
+                        visibility: hidden   ;
+                        pointer-events: none;
+                        width: 300px;
+                        background-color: rgba(214, 214, 209, .8);
+                    }
+                }
+            }
+        }
+    }
+}
+// page-body-ends
